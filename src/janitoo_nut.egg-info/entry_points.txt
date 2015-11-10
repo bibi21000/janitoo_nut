@@ -1,0 +1,6 @@
+[janitoo.components]
+nut.ups = janitoo_nut.nut:make_ups
+
+[janitoo.threads]
+nut = janitoo_nut.nut:make_thread
+

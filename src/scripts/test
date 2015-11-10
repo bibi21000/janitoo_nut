@@ -1,0 +1,8 @@
+#!/usr/bin/python
+
+from nut2 import PyNUTClient
+client = PyNUTClient(host="192.168.14.5",login='monuser', password='pass')
+client.help()
+print client.list_ups()
+print client.list_vars("UPS")
+print client.list_vars("UPS2")
