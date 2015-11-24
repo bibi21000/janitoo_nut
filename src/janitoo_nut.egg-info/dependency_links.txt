@@ -1,1 +1,0 @@
-https://github.com/rshipp/python-nut2/archive/master.zip#egg=nut2

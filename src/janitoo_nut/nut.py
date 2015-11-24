@@ -33,7 +33,6 @@ import os, sys
 from datetime import datetime, timedelta
 from nut2 import PyNUTClient
 import threading
-import requests
 
 from janitoo.thread import JNTBusThread
 from janitoo.options import get_option_autostart

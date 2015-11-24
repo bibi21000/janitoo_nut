@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Unittests for Datalog Server.
+"""Unittests for Janitoo-Roomba Server.
 """
 __license__ = """
     This file is part of Janitoo.
@@ -32,12 +32,7 @@ from pkg_resources import iter_entry_points
 
 from janitoo_nosetests.server import JNTTServer, JNTTServerCommon
 from janitoo_nosetests.thread import JNTTThread, JNTTThreadCommon
-SKIP = False
-try:
-    from janitoo_nosetests.packaging import JNTTPackaging, JNTTPackagingCommon
-except:
-    print "Skip tests"
-    SKIP = True
+from janitoo_nosetests.component import JNTTComponent, JNTTComponentCommon
 
 from janitoo.utils import json_dumps, json_loads
 from janitoo.utils import HADD_SEP, HADD
@@ -46,6 +41,7 @@ from janitoo.utils import TOPIC_NODES, TOPIC_NODES_REPLY, TOPIC_NODES_REQUEST
 from janitoo.utils import TOPIC_BROADCAST_REPLY, TOPIC_BROADCAST_REQUEST
 from janitoo.utils import TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_SYSTEM, TOPIC_VALUES_BASIC
 
+from janitoo_nut.server import NutServer
 ##############################################################
 #Check that we are in sync with the official command classes
 #Must be implemented for non-regression
@@ -56,9 +52,7 @@ COMMAND_DISCOVERY = 0x5000
 assert(COMMAND_DESC[COMMAND_DISCOVERY] == 'COMMAND_DISCOVERY')
 ##############################################################
 
-if not SKIP:
-
-    class TestPackage(JNTTPackaging, JNTTPackagingCommon):
-        """Test the server
-        """
-        pass
+class TestNutThread(JNTTThread, JNTTThreadCommon):
+    """Test the thread
+    """
+    thread_name = "nut"

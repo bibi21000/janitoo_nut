@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Unittests for Datalog Server.
+"""Unittests for Hostsensor Server.
 """
 __license__ = """
     This file is part of Janitoo.
@@ -32,12 +32,6 @@ from pkg_resources import iter_entry_points
 
 from janitoo_nosetests.server import JNTTServer, JNTTServerCommon
 from janitoo_nosetests.thread import JNTTThread, JNTTThreadCommon
-SKIP = False
-try:
-    from janitoo_nosetests.packaging import JNTTPackaging, JNTTPackagingCommon
-except:
-    print "Skip tests"
-    SKIP = True
 
 from janitoo.utils import json_dumps, json_loads
 from janitoo.utils import HADD_SEP, HADD
@@ -45,6 +39,8 @@ from janitoo.utils import TOPIC_HEARTBEAT
 from janitoo.utils import TOPIC_NODES, TOPIC_NODES_REPLY, TOPIC_NODES_REQUEST
 from janitoo.utils import TOPIC_BROADCAST_REPLY, TOPIC_BROADCAST_REQUEST
 from janitoo.utils import TOPIC_VALUES_USER, TOPIC_VALUES_CONFIG, TOPIC_VALUES_SYSTEM, TOPIC_VALUES_BASIC
+
+from janitoo_nut.server import NutServer
 
 ##############################################################
 #Check that we are in sync with the official command classes
@@ -56,9 +52,29 @@ COMMAND_DISCOVERY = 0x5000
 assert(COMMAND_DESC[COMMAND_DISCOVERY] == 'COMMAND_DISCOVERY')
 ##############################################################
 
-if not SKIP:
 
-    class TestPackage(JNTTPackaging, JNTTPackagingCommon):
-        """Test the server
-        """
-        pass
+class TestNutSerser(JNTTServer, JNTTServerCommon):
+    """Test the server
+    """
+    loglevel = logging.DEBUG
+    path = '/tmp/janitoo_test'
+    broker_user = 'toto'
+    broker_password = 'toto'
+    server_class = NutServer
+    server_conf = "tests/data/janitoo_nut.conf"
+
+    def test_101_wait_for_all_nodes(self):
+        self.onlyTravisTest()
+        self.start()
+        self.assertHeartbeatNode(hadd=HADD%(1045,0))
+        self.assertHeartbeatNode(hadd=HADD%(1045,1))
+        self.assertHeartbeatNode(hadd=HADD%(1045,2))
+        self.stop()
+
+    def test_110_request_system_values(self):
+        self.start()
+        nodeHADD=HADD%(1045,0)
+        self.assertHeartbeatNode(hadd=nodeHADD)
+        self.assertNodeRequest(cmd_class=COMMAND_DISCOVERY, uuid='request_info_nodes', node_hadd=nodeHADD, client_hadd=HADD%(9999,0))
+        self.assertBroadcastRequest(cmd_class=COMMAND_DISCOVERY, uuid='request_info_nodes', client_hadd=HADD%(9999,0))
+        self.stop()
