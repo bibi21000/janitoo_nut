@@ -56,3 +56,4 @@ class TestNutThread(JNTTThread, JNTTThreadCommon):
     """Test the thread
     """
     thread_name = "nut"
+    conf_file = "tests/data/janitoo_nut.conf"
