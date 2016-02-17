@@ -64,17 +64,27 @@ class TestNutSerser(JNTTServer, JNTTServerCommon):
     server_conf = "tests/data/janitoo_nut.conf"
 
     def test_101_wait_for_all_nodes(self):
-        self.onlyTravisTest()
         self.start()
-        self.assertHeartbeatNode(hadd=HADD%(1045,0))
-        self.assertHeartbeatNode(hadd=HADD%(1045,1))
-        self.assertHeartbeatNode(hadd=HADD%(1045,2))
-        self.stop()
+        try:
+            self.assertHeartbeatNodes(hadds=[HADD%(1045,0), HADD%(1045,1), HADD%(1045,2)])
+        finally:
+            self.stop()
 
-    def test_110_request_system_values(self):
+    def test_111_server_start_no_error_in_log(self):
         self.start()
-        nodeHADD=HADD%(1045,0)
-        self.assertHeartbeatNode(hadd=nodeHADD)
-        self.assertNodeRequest(cmd_class=COMMAND_DISCOVERY, uuid='request_info_nodes', node_hadd=nodeHADD, client_hadd=HADD%(9999,0))
-        self.assertBroadcastRequest(cmd_class=COMMAND_DISCOVERY, uuid='request_info_nodes', client_hadd=HADD%(9999,0))
-        self.stop()
+        try:
+            time.sleep(120)
+            self.assertInLogfile('Found heartbeats in timeout')
+            self.assertNotInLogfile('^ERROR ')
+        finally:
+            self.stop()
+
+    def test_112_request_nodes_and_values(self):
+        self.start()
+        try:
+            self.assertHeartbeatNode()
+            time.sleep(5)
+            for request in NETWORK_REQUESTS:
+                self.assertNodeRequest(cmd_class=COMMAND_DISCOVERY, uuid=request, node_hadd=HADD%(0145,0), client_hadd=HADD%(9999,0))
+        finally:
+            self.stop()
