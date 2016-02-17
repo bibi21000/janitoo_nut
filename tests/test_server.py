@@ -85,6 +85,6 @@ class TestNutSerser(JNTTServer, JNTTServerCommon):
             self.assertHeartbeatNode()
             time.sleep(5)
             for request in NETWORK_REQUESTS:
-                self.assertNodeRequest(cmd_class=COMMAND_DISCOVERY, uuid=request, node_hadd=HADD%(0145,0), client_hadd=HADD%(9999,0))
+                self.assertNodeRequest(cmd_class=COMMAND_DISCOVERY, uuid=request, node_hadd=HADD%(1045,0), client_hadd=HADD%(9999,0))
         finally:
             self.stop()
