@@ -64,12 +64,3 @@ class TestNutSerser(JNTTServer, JNTTServerCommon):
     server_conf = "tests/data/janitoo_nut.conf"
     hadds = [HADD%(1045,0), HADD%(1045,1), HADD%(1045,2)]
 
-    def test_101_server_start_no_error_in_log(self):
-        self.start()
-        try:
-            time.sleep(120)
-        finally:
-            self.stop()
-        self.assertNotInLogfile('^ERROR ')
-        self.assertInLogfile('Found heartbeats in timeout')
-
