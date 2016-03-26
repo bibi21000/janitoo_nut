@@ -97,11 +97,13 @@ setup(
     data_files = data_files,
     install_requires=[
                      'janitoo',
+                     'janitoo_factory',
                      'nut2',
                     ],
     dependency_links = [
       'https://github.com/rshipp/python-nut2/archive/master.zip#egg=nut2',
       'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo',
+      'https://github.com/bibi21000/janitoo_factory/archive/master.zip#egg=janitoo_factory',
     ],
     entry_points = janitoo_entry_points,
 )
