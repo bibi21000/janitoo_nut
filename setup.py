@@ -54,17 +54,6 @@ def data_files_config(res, rsrc, src, pattern):
 data_files = []
 data_files_config(data_files, 'docs','src/docs/','*')
 
-#You must define a variable like the one below.
-#It will be used to collect entries without installing the package
-janitoo_entry_points = {
-    "janitoo.threads": [
-        "nut = janitoo_nut.nut:make_thread",
-    ],
-    "janitoo.components": [
-        "nut.ups = janitoo_nut.nut:make_ups",
-    ],
-}
-
 setup(
     name = 'janitoo_nut',
     description = "A controller dedicated to the Network UPS Tools",
@@ -98,12 +87,21 @@ setup(
     install_requires=[
                      'janitoo',
                      'janitoo_factory',
+                     'janitoo_factory_exts',
                      'nut2',
                     ],
     dependency_links = [
       'https://github.com/rshipp/python-nut2/archive/master.zip#egg=nut2',
       'https://github.com/bibi21000/janitoo/archive/master.zip#egg=janitoo',
       'https://github.com/bibi21000/janitoo_factory/archive/master.zip#egg=janitoo_factory',
+      'https://github.com/bibi21000/janitoo_factory_exts/archive/master.zip#egg=janitoo_factory_exts',
     ],
-    entry_points = janitoo_entry_points,
+    entry_points = {
+        "janitoo.threads": [
+            "nut = janitoo_nut.nut:make_thread",
+        ],
+        "janitoo.components": [
+            "nut.ups = janitoo_nut.nut:make_ups",
+        ],
+    },
 )
