@@ -42,6 +42,8 @@ from janitoo.value import JNTValue, value_config_poll
 from janitoo.bus import JNTBus
 from janitoo.component import JNTComponent
 
+OID = 'nut'
+
 def make_thread(options):
     if get_option_autostart(options, 'nut') == True:
         return NutThread(options)
@@ -67,7 +69,13 @@ class NutUps(JNTComponent):
     as well as methods to command the robot
     """
     def __init__(self, bus=None, addr=None, **kwargs):
-        JNTComponent.__init__(self, 'nut.ups', bus=bus, addr=addr, name="NUT Ups", **kwargs)
+        JNTComponent.__init__(self,
+            oid = kwargs.pop('oid', '%s.ups'%OID),
+            bus = bus,
+            addr = addr,
+            name = kwargs.pop('name', "NUT Ups"),
+            product_name = kwargs.pop('product_name', "NUT Ups"),
+            **kwargs)
         self._lock =  threading.Lock()
         self._battery_charge = -1.0
         self._battery_voltage = -1.0
