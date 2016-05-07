@@ -44,8 +44,8 @@ from janitoo.component import JNTComponent
 
 OID = 'nut'
 
-def make_thread(options):
-    if get_option_autostart(options, 'nut') == True:
+def make_thread(options, force=False):
+    if get_option_autostart(options, 'nut') == True or force:
         return NutThread(options)
     else:
         return None
