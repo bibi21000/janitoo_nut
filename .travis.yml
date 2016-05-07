@@ -9,7 +9,7 @@ python:
 before_install:
   - sudo apt-get update -qq
   - sudo make deps
-  - sudo make directories
+  - make directories
 install:
   - make travis-deps
   - python setup.py install
