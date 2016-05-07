@@ -45,7 +45,7 @@ from janitoo.component import JNTComponent
 OID = 'nut'
 
 def make_thread(options, force=False):
-    if get_option_autostart(options, 'nut') == True or force:
+    if get_option_autostart(options, OID) == True or force:
         return NutThread(options)
     else:
         return None
@@ -60,7 +60,7 @@ class NutThread(JNTBusThread):
     def init_bus(self):
         """Build the bus
         """
-        self.section = 'nut'
+        self.section = OID
         self.bus = JNTBus(options=self.options, oid=self.section, product_name="NUT controller")
 
 class NutUps(JNTComponent):
