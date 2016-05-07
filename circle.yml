@@ -1,6 +1,6 @@
 #####
 # Circle CI
-# 
+#
 # For running docker images on circle ci, see: https://circleci.com/docs/docker
 # For circle.yml explanation, see: https://circleci.com/docs/manually
 # Python specific configuration, see: https://circleci.com/docs/language-python
@@ -8,5 +8,6 @@
 
 dependencies:
     pre:
+        - make directories
         - make deps
         - make travis-deps
