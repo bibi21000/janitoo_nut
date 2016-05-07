@@ -9,8 +9,8 @@ python:
 before_install:
   - sudo apt-get update -qq
   - sudo make deps
-  - make directories
 install:
+  - make directories
   - make travis-deps
   - python setup.py install
 # command to run tests
