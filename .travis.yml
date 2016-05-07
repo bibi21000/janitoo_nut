@@ -8,7 +8,8 @@ python:
 # command to install dependencies
 before_install:
   - sudo apt-get update -qq
-  - make deps
+  - sudo make deps
+  - sudo make directories
 install:
   - make travis-deps
   - python setup.py install
