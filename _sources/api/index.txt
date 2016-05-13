@@ -1,0 +1,30 @@
+janitoo_nut package
+===================
+
+Submodules
+----------
+
+janitoo_nut.nut module
+----------------------
+
+.. automodule:: janitoo_nut.nut
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+janitoo_nut.server module
+-------------------------
+
+.. automodule:: janitoo_nut.server
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: janitoo_nut
+    :members:
+    :undoc-members:
+    :show-inheritance:

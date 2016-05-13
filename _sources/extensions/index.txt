@@ -1,0 +1,18 @@
+janitoo_nut package
+===================
+
+Show janitoo's extensions.
+
+Core extensions
+---------------
+
+Threads
+^^^^^^^
+
+ - nut (janitoo_nut.nut:make_thread)
+
+Components
+^^^^^^^^^^
+
+ - nut.ups (janitoo_nut.nut:make_ups)
+
