@@ -1,18 +1,7 @@
-janitoo_nut package
-===================
+Janitoo's extensions
+====================
 
-Show janitoo's extensions.
+This package contains the following extensions for Janitoo.
 
-Core extensions
----------------
-
-Threads
-^^^^^^^
-
- - nut (janitoo_nut.nut:make_thread)
-
-Components
-^^^^^^^^^^
-
- - nut.ups (janitoo_nut.nut:make_ups)
+.. jnt-extensions::
 
