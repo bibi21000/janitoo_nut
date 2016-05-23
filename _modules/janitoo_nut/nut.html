@@ -314,7 +314,7 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">product_manufacturer</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s">&#39;ups.mfr&#39;</span><span class="p">]</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_ups_stats_last</span> <span class="o">=</span> <span class="bp">True</span>
                     <span class="n">ret</span> <span class="o">=</span> <span class="bp">True</span>
-                <span class="k">except</span><span class="p">:</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
                     <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">%s</span><span class="s">] - Exception catched in get_ups_stats&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_ups_stats_last</span> <span class="o">=</span> <span class="bp">False</span>
                 <span class="k">finally</span><span class="p">:</span>
