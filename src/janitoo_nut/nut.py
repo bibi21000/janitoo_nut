@@ -205,7 +205,7 @@ class NutUps(JNTComponent):
                     self.node.product_manufacturer = res['ups.mfr']
                     self._ups_stats_last = True
                     ret = True
-                except:
+                except Exception:
                     logger.exception("[%s] - Exception catched in get_ups_stats", self.__class__.__name__)
                     self._ups_stats_last = False
                 finally:
