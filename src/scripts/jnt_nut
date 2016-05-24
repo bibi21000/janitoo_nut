@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""The init script for Janitoo Raspberry Pi server
+"""The init script for Janitoo NUT server
 """
 __license__ = """
     This file is part of Janitoo.
@@ -23,15 +23,7 @@ __email__ = 'bibi21000@gmail.com'
 
 # Set default logging handler to avoid "No handler found" warnings.
 import logging
-try:  # Python 2.7+                                   # pragma: no cover
-    from logging import NullHandler                   # pragma: no cover
-except ImportError:                                   # pragma: no cover
-    class NullHandler(logging.Handler):               # pragma: no cover
-        """NullHandler logger for python 2.6"""       # pragma: no cover
-        def emit(self, record):                       # pragma: no cover
-            pass                                      # pragma: no cover
 logger = logging.getLogger(__name__)
-logger.addHandler(NullHandler())
 import sys, os, re, shutil, datetime
 from janitoo_nut.server import NutServer
 from janitoo.runner import Runner, jnt_parse_args
