@@ -11,10 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-    Installation <index_installation>
-    Utilization <index_utilization>
-    Development <index_development>
-
+    Docker appliance image<docker>
 
 Indices and tables
 ==================

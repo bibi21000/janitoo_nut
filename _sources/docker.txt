@@ -1,0 +1,206 @@
+==========================
+Using the docker appliance
+==========================
+
+.. image:: https://imagelayers.io/badge/bibi21000/janitoo_nut:latest.svg
+    :target: https://imagelayers.io/?images=bibi21000/janitoo_nut:latest
+    :alt: Docker image layers
+
+
+Installing Docker
+=================
+
+Install docker using the following documentation https://docs.docker.com/engine/installation/
+
+
+Initial installation
+====================
+
+Pull the image :
+
+.. code:: bash
+
+    $ docker pull bibi21000/janitoo_nut
+
+Create a 'store' container  :
+
+.. code:: bash
+
+    $ docker create -v /root/.ssh/ -v /opt/janitoo/etc/ --name nut_store bibi21000/janitoo_nut /bin/true
+
+Create a 'running' container :
+
+.. code:: bash
+
+    $ docker create --volumes-from nut_store -p 8883:22 --name nut_running bibi21000/janitoo_nut
+
+Yous should now have 2 created containers :
+
+.. code:: bash
+
+    $ docker ps -a
+
+.. code:: bash
+
+    CONTAINER ID        IMAGE                          COMMAND             CREATED             STATUS      PORTS       NAMES
+    2f2496fbd885        bibi21000/janitoo_nut          "/root/auto.sh"     9 seconds ago       Created                                    nut_running
+    1b6e0270e728        bibi21000/janitoo_nut          "/bin/true"         20 seconds ago      Created                                    nut_store
+
+
+Start the container
+===================
+
+Start it :
+
+.. code:: bash
+
+    $ docker start nut_running
+
+Check that is running :
+
+.. code:: bash
+
+    $ docker ps
+
+.. code:: bash
+
+    CONTAINER ID        IMAGE                          COMMAND             CREATED              STATUS          PORTS                  NAMES
+    cc1a58b59f7c        bibi21000/janitoo_nut   "/root/auto.sh"     About a minute ago   Up 8 seconds    0.0.0.0:8882->22/tcp   nut_running
+
+And stop it :
+
+.. code:: bash
+
+    $ docker stop nut_running
+
+
+You can also attach a started 'running' container to get a look at the top command:
+
+.. code:: bash
+
+    $ docker attach nut_running
+
+To detach use ctrl + p + ctrl + q
+
+
+Update your installation
+========================
+
+Delete the 'running' container :
+
+.. code:: bash
+
+    $ docker rm nut_running
+
+Pull the image release :
+
+.. code:: bash
+
+    $ docker pull bibi21000/janitoo_nut
+
+And create a new 'running' container :
+
+.. code:: bash
+
+    $ docker create --volumes-from nut_store -p 8883:22 --name nut_running bibi21000/janitoo_nut
+
+
+Customize your installation
+===========================
+
+You can find basis customizations tips here : https://bibi21000.github.io/janitoo_docker_appliance/customize.html.
+
+This configuration is saved in the 'store' container.
+
+Configuration
+-------------
+
+Update the nut configuration file :
+
+.. code:: bash
+
+    $ ssh root@$127.0.0.1 -p 8883
+
+Default password is janitoo. You can change it but it will be restored on the next running container update. Prefer the key solutions.
+
+Open the configuration file. The docker image contains a nano or vim for editing files :
+
+.. code:: bash
+
+    root@8eafc45f6d09:~# vim /opt/janitoo/etc/janitoo_nut.conf
+
+You must at least update the broker ip. It should match the ip address of your shared "mosquitto" :
+
+.. code:: bash
+
+    broker_ip = 192.168.1.14
+
+If you plan to install more than one janitoo_nut image on your network, you must change the hadd of the bus and components :
+
+.. code:: bash
+
+    hadd = 0120/0000
+
+to
+
+.. code:: bash
+
+    hadd = 0124/0000
+
+And so on for 0120/0001, 0120/0002, ... Keep in mind that hadd must be unique on your network.
+
+Save your updates and restart jnt_nut :
+
+.. code:: bash
+
+    root@8eafc45f6d09:~# killall jnt_nut
+
+Ups
+---
+
+Update the ip, upsname, username ans password matching your nut server installation :
+
+.. code:: bash
+
+    [nut__ups1]
+    heartbeat = 60
+    name = UPS 1
+    hadd = 0120/0001
+    ip_ping_config_0 = 127.0.0.1
+    username_0 = monuser
+    upsname_0 = UPS
+    password_0 = pass
+
+Save and restart your server to apply.
+
+Performances
+============
+
+The top result in the running appliance :
+
+.. code:: bash
+
+    root@7de7e4993b13:~# top
+
+.. code:: bash
+
+    top - 20:35:46 up 1 day,  2:13,  1 user,  load average: 0.41, 0.65, 0.67
+    Tasks:   8 total,   1 running,   7 sleeping,   0 stopped,   0 zombie
+    %Cpu(s):  6.3 us,  1.4 sy,  0.0 ni, 90.9 id,  1.4 wa,  0.0 hi,  0.0 si,  0.0 st
+    KiB Mem:  11661364 total, 10395640 used,  1265724 free,  1712168 buffers
+    KiB Swap: 19530748 total,     9460 used, 19521288 free.  3876920 cached Mem
+
+      PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+       12 root      20   0  489240  23088   4472 S   2.7  0.2   0:58.21 /usr/local/bin/python /usr/local/bin/jnt_nut -c /etc/janitoo/janitoo_nut.c+
+       11 root      39  19   23500   1492   1200 S   0.3  0.0   0:00.12 top -b
+        1 root      20   0   21740   1596   1328 S   0.0  0.0   0:00.03 /bin/bash /root/auto.sh
+       10 root      20   0   55508  10068   1336 S   0.0  0.1   0:00.06 /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+       13 root      20   0   55176   3120   2444 S   0.0  0.0   0:00.01 /usr/sbin/sshd -D
+       24 root      20   0   82716   3936   3076 S   0.0  0.0   0:00.06 sshd: root@pts/0
+       29 root      20   0   20244   1904   1488 S   0.0  0.0   0:00.00 -bash
+       34 root      20   0   21940   1412   1048 R   0.0  0.0   0:00.12 top
+
+Administer your containers
+==========================
+
+You can find basis administration tips here : https://bibi21000.github.io/janitoo_docker_appliance/administer.html.

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using the docker appliance &mdash; janitoo_nut 0.0.7 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.4/united/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.7',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="janitoo_nut 0.0.7 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to documentation!" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          janitoo_nut</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.0.7</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="tools/index.html">Tools</a></li>
+                <li><a href="api/index.html">Reference</a></li>
+                <li><a href="extensions/index.html">Janitoo extensions</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href=""> Docker appliance image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-docker">Installing Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initial-installation">Initial installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#start-the-container">Start the container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-your-installation">Update your installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customize-your-installation">Customize your installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#performances">Performances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#administer-your-containers">Administer your containers</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: Welcome to documentation!"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Welcome to do...</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="using-the-docker-appliance">
+<h1>Using the docker appliance<a class="headerlink" href="#using-the-docker-appliance" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://imagelayers.io/?images=bibi21000/janitoo_nut:latest"><img alt="Docker image layers" src="https://imagelayers.io/badge/bibi21000/janitoo_nut:latest.svg" /></a>
+<div class="section" id="installing-docker">
+<h2>Installing Docker<a class="headerlink" href="#installing-docker" title="Permalink to this headline">¶</a></h2>
+<p>Install docker using the following documentation <a class="reference external" href="https://docs.docker.com/engine/installation/">https://docs.docker.com/engine/installation/</a></p>
+</div>
+<div class="section" id="initial-installation">
+<h2>Initial installation<a class="headerlink" href="#initial-installation" title="Permalink to this headline">¶</a></h2>
+<p>Pull the image :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ docker pull bibi21000/janitoo_nut
+</pre></div>
+</div>
+<p>Create a &#8216;store&#8217; container  :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ docker create -v /root/.ssh/ -v /opt/janitoo/etc/ --name nut_store bibi21000/janitoo_nut /bin/true
+</pre></div>
+</div>
+<p>Create a &#8216;running&#8217; container :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ docker create --volumes-from nut_store -p 8883:22 --name nut_running bibi21000/janitoo_nut
+</pre></div>
+</div>
+<p>Yous should now have 2 created containers :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ docker ps -a
+</pre></div>
+</div>
+<div class="code bash highlight-python"><div class="highlight"><pre>CONTAINER ID        IMAGE                          COMMAND             CREATED             STATUS      PORTS       NAMES
+2f2496fbd885        bibi21000/janitoo_nut          &quot;/root/auto.sh&quot;     9 seconds ago       Created                                    nut_running
+1b6e0270e728        bibi21000/janitoo_nut          &quot;/bin/true&quot;         20 seconds ago      Created                                    nut_store
+</pre></div>
+</div>
+</div>
+<div class="section" id="start-the-container">
+<h2>Start the container<a class="headerlink" href="#start-the-container" title="Permalink to this headline">¶</a></h2>
+<p>Start it :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ docker start nut_running
+</pre></div>
+</div>
+<p>Check that is running :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ docker ps
+</pre></div>
+</div>
+<div class="code bash highlight-python"><div class="highlight"><pre>CONTAINER ID        IMAGE                          COMMAND             CREATED              STATUS          PORTS                  NAMES
+cc1a58b59f7c        bibi21000/janitoo_nut   &quot;/root/auto.sh&quot;     About a minute ago   Up 8 seconds    0.0.0.0:8882-&gt;22/tcp   nut_running
+</pre></div>
+</div>
+<p>And stop it :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ docker stop nut_running
+</pre></div>
+</div>
+<p>You can also attach a started &#8216;running&#8217; container to get a look at the top command:</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ docker attach nut_running
+</pre></div>
+</div>
+<p>To detach use ctrl + p + ctrl + q</p>
+</div>
+<div class="section" id="update-your-installation">
+<h2>Update your installation<a class="headerlink" href="#update-your-installation" title="Permalink to this headline">¶</a></h2>
+<p>Delete the &#8216;running&#8217; container :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ docker rm nut_running
+</pre></div>
+</div>
+<p>Pull the image release :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ docker pull bibi21000/janitoo_nut
+</pre></div>
+</div>
+<p>And create a new &#8216;running&#8217; container :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ docker create --volumes-from nut_store -p 8883:22 --name nut_running bibi21000/janitoo_nut
+</pre></div>
+</div>
+</div>
+<div class="section" id="customize-your-installation">
+<h2>Customize your installation<a class="headerlink" href="#customize-your-installation" title="Permalink to this headline">¶</a></h2>
+<p>You can find basis customizations tips here : <a class="reference external" href="https://bibi21000.github.io/janitoo_docker_appliance/customize.html">https://bibi21000.github.io/janitoo_docker_appliance/customize.html</a>.</p>
+<p>This configuration is saved in the &#8216;store&#8217; container.</p>
+<div class="section" id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<p>Update the nut configuration file :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>$ ssh root@$127.0.0.1 -p 8883
+</pre></div>
+</div>
+<p>Default password is janitoo. You can change it but it will be restored on the next running container update. Prefer the key solutions.</p>
+<p>Open the configuration file. The docker image contains a nano or vim for editing files :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>root@8eafc45f6d09:~# vim /opt/janitoo/etc/janitoo_nut.conf
+</pre></div>
+</div>
+<p>You must at least update the broker ip. It should match the ip address of your shared &#8220;mosquitto&#8221; :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>broker_ip = 192.168.1.14
+</pre></div>
+</div>
+<p>If you plan to install more than one janitoo_nut image on your network, you must change the hadd of the bus and components :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span class="n">hadd</span> <span class="o">=</span> <span class="mo">0120</span><span class="o">/</span><span class="mo">0000</span>
+</pre></div>
+</div>
+<p>to</p>
+<div class="code bash highlight-python"><div class="highlight"><pre><span class="n">hadd</span> <span class="o">=</span> <span class="mo">0124</span><span class="o">/</span><span class="mo">0000</span>
+</pre></div>
+</div>
+<p>And so on for 0120/0001, 0120/0002, ... Keep in mind that hadd must be unique on your network.</p>
+<p>Save your updates and restart jnt_nut :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>root@8eafc45f6d09:~# killall jnt_nut
+</pre></div>
+</div>
+</div>
+<div class="section" id="ups">
+<h3>Ups<a class="headerlink" href="#ups" title="Permalink to this headline">¶</a></h3>
+<p>Update the ip, upsname, username ans password matching your nut server installation :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>[nut__ups1]
+heartbeat = 60
+name = UPS 1
+hadd = 0120/0001
+ip_ping_config_0 = 127.0.0.1
+username_0 = monuser
+upsname_0 = UPS
+password_0 = pass
+</pre></div>
+</div>
+<p>Save and restart your server to apply.</p>
+</div>
+</div>
+<div class="section" id="performances">
+<h2>Performances<a class="headerlink" href="#performances" title="Permalink to this headline">¶</a></h2>
+<p>The top result in the running appliance :</p>
+<div class="code bash highlight-python"><div class="highlight"><pre>root@7de7e4993b13:~# top
+</pre></div>
+</div>
+<div class="code bash highlight-python"><div class="highlight"><pre>top - 20:35:46 up 1 day,  2:13,  1 user,  load average: 0.41, 0.65, 0.67
+Tasks:   8 total,   1 running,   7 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  6.3 us,  1.4 sy,  0.0 ni, 90.9 id,  1.4 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem:  11661364 total, 10395640 used,  1265724 free,  1712168 buffers
+KiB Swap: 19530748 total,     9460 used, 19521288 free.  3876920 cached Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+   12 root      20   0  489240  23088   4472 S   2.7  0.2   0:58.21 /usr/local/bin/python /usr/local/bin/jnt_nut -c /etc/janitoo/janitoo_nut.c+
+   11 root      39  19   23500   1492   1200 S   0.3  0.0   0:00.12 top -b
+    1 root      20   0   21740   1596   1328 S   0.0  0.0   0:00.03 /bin/bash /root/auto.sh
+   10 root      20   0   55508  10068   1336 S   0.0  0.1   0:00.06 /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+   13 root      20   0   55176   3120   2444 S   0.0  0.0   0:00.01 /usr/sbin/sshd -D
+   24 root      20   0   82716   3936   3076 S   0.0  0.0   0:00.06 sshd: root@pts/0
+   29 root      20   0   20244   1904   1488 S   0.0  0.0   0:00.00 -bash
+   34 root      20   0   21940   1412   1048 R   0.0  0.0   0:00.12 top
+</pre></div>
+</div>
+</div>
+<div class="section" id="administer-your-containers">
+<h2>Administer your containers<a class="headerlink" href="#administer-your-containers" title="Permalink to this headline">¶</a></h2>
+<p>You can find basis administration tips here : <a class="reference external" href="https://bibi21000.github.io/janitoo_docker_appliance/administer.html">https://bibi21000.github.io/janitoo_docker_appliance/administer.html</a>.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014,2015,2016 Sébastien GALLET aka bibi2100 &lt;bibi21000@gmail.com&gt;.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
