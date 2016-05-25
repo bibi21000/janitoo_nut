@@ -13,6 +13,7 @@ Contents:
 
     Docker appliance image<docker>
     Queries results<queries>
+    Using documentation <using_doc>
 
 Indices and tables
 ==================
