@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Python Module Index &mdash; janitoo_nut 0.0.7 documentation</title>
+    <title>Queries &mdash; janitoo_nut 0.0.7 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -33,13 +33,11 @@
     <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="janitoo_nut 0.0.7 documentation" href="index.html" />
-
+    <link rel="prev" title="Using the docker appliance" href="docker.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-
-
 
   </head>
   <body>
@@ -74,7 +72,7 @@
      href="index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="docker.html"> Docker appliance image</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="docker.html#installing-docker">Installing Docker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docker.html#initial-installation">Initial installation</a></li>
@@ -84,7 +82,7 @@
 <li class="toctree-l2"><a class="reference internal" href="docker.html#administer-your-containers">Administer your containers</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="queries.html"> Queries results</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href=""> Queries results</a></li>
 </ul>
 </ul>
 </li>
@@ -93,6 +91,10 @@
             
               
                 
+  <li>
+    <a href="docker.html" title="Previous Chapter: Using the docker appliance"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Using the doc...</span>
+    </a>
+  </li>
               
             
             
@@ -118,34 +120,48 @@
   <div class="row">
     <div class="col-md-12 content">
       
-
-   <h1>Python Module Index</h1>
-
-   <div class="modindex-jumpbox">
-   <a href="#cap-j"><strong>j</strong></a>
-   </div>
-
-   <table class="indextable modindextable" cellspacing="0" cellpadding="2">
-     <tr class="pcap"><td></td><td>&nbsp;</td><td></td></tr>
-     <tr class="cap" id="cap-j"><td></td><td>
-       <strong>j</strong></td><td></td></tr>
-     <tr>
-       <td><img src="_static/minus.png" class="toggler"
-              id="toggle-1" style="display: none" alt="-" /></td>
-       <td>
-       <a href="api/index.html#module-janitoo_nut"><tt class="xref">janitoo_nut</tt></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&nbsp;&nbsp;&nbsp;
-       <a href="api/index.html#module-janitoo_nut.nut"><tt class="xref">janitoo_nut.nut</tt></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&nbsp;&nbsp;&nbsp;
-       <a href="api/index.html#module-janitoo_nut.server"><tt class="xref">janitoo_nut.server</tt></a></td><td>
-       <em></em></td></tr>
-   </table>
+  <div class="section" id="queries">
+<h1>Queries<a class="headerlink" href="#queries" title="Permalink to this headline">¶</a></h1>
+<div class="code bash highlight-python"><div class="highlight"><pre>pi@raspberrypi ~ $ jnt_query node --hadd 0120/0000 --vuuid request_info_users
+</pre></div>
+</div>
+<div class="code bash highlight-python"><div class="highlight"><pre>hadd       node_uuid                 uuid                           idx  data                      units      type  genre cmdclass help
+0120/0001  nut__ups1                 status                         0    OL                        None       8     2     49       The status of the UPS
+0120/0001  nut__ups1                 ip_ping                        0    1                         None       1     2     48       Ping the nut server
+0120/0001  nut__ups1                 battery_chemistry              0    PbAc                      None       8     2     49       The chemistry of the battery
+0120/0001  nut__ups1                 battery_voltage                0    13.6                      V          3     2     49       The voltage of the battery
+0120/0001  nut__ups1                 battery_charge                 0    100                       %          3     2     49       The charge of the battery
+0120/0001  nut__ups1                 battery_runtime                0    637                       Seconds    4     2     49       The left runtime of the battery
+</pre></div>
+</div>
+<div class="code bash highlight-python"><div class="highlight"><pre>pi@raspberrypi ~ $ jnt_query node --hadd 0120/0000 --vuuid request_info_basics
+</pre></div>
+</div>
+<div class="code bash highlight-python"><div class="highlight"><pre>hadd       node_uuid                 uuid                           idx  data                      units      type  genre cmdclass help
+</pre></div>
+</div>
+<div class="code bash highlight-python"><div class="highlight"><pre>pi@raspberrypi ~ $ jnt_query node --hadd 0120/0000 --vuuid request_info_configs
+</pre></div>
+</div>
+<div class="code bash highlight-python"><div class="highlight"><pre>hadd       node_uuid                 uuid                           idx  data                      units      type  genre cmdclass help
+0120/0001  nut__ups1                 username                       0    monuser                   None       8     3     112      Username to connect the nut server
+0120/0001  nut__ups1                 name                           0    UPS                       None       8     3     112      The name of the node
+0120/0001  nut__ups1                 battery_voltage_poll           0    90                        seconds    4     3     112      The poll delay of the value
+0120/0001  nut__ups1                 upsname                        0    UPS                       None       8     3     112      Ups name on the nut server
+0120/0001  nut__ups1                 battery_charge_poll            0    90                        seconds    4     3     112      The poll delay of the value
+0120/0001  nut__ups1                 status_poll                    0    60                        seconds    4     3     112      The poll delay of the value
+0120/0001  nut__ups1                 battery_runtime_poll           0    90                        seconds    4     3     112      The poll delay of the value
+0120/0001  nut__ups1                 location                       0    Default location          None       8     3     112      The location of the node
+0120/0001  nut__ups1                 ip_ping_poll                   0    30                        seconds    4     3     112      The poll delay of the value
+0120/0001  nut__ups1                 ip_ping_config                 0    192.168.14.5              None       33    3     112      The IP of the NUT server
+0120/0001  nut__ups1                 battery_chemistry_poll         0    1800                      seconds    4     3     112      The poll delay of the value
+0120/0001  nut__ups1                 password                       0    pass                      None       20    3     112      Password to connect the nut server
+0120/0001  nut__ups1                 port                           0    3493                      None       4     3     112      Port to connect the nut server
+0120/0000  nut                       location                       0    Default location          None       8     3     112      The location of the node
+0120/0000  nut                       name                           0    Default bus name controller None       8     3     112      The name of the node
+</pre></div>
+</div>
+</div>
 
 
     </div>

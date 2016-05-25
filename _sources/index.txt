@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
 
     Docker appliance image<docker>
+    Queries results<queries>
 
 Indices and tables
 ==================
