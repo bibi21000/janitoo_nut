@@ -74,37 +74,6 @@ And stop it :
     $ docker stop nut_running
 
 
-You can also attach a started 'running' container to get a look at the top command:
-
-.. code:: bash
-
-    $ docker attach nut_running
-
-To detach use ctrl + p + ctrl + q
-
-
-Update your installation
-========================
-
-Delete the 'running' container :
-
-.. code:: bash
-
-    $ docker rm nut_running
-
-Pull the image release :
-
-.. code:: bash
-
-    $ docker pull bibi21000/janitoo_nut
-
-And create a new 'running' container :
-
-.. code:: bash
-
-    $ docker create --volumes-from nut_store -p 8883:22 --name nut_running bibi21000/janitoo_nut
-
-
 Customize your installation
 ===========================
 
@@ -184,21 +153,21 @@ The top result in the running appliance :
 
 .. code:: bash
 
-    top - 20:35:46 up 1 day,  2:13,  1 user,  load average: 0.41, 0.65, 0.67
+    top - 23:48:17 up 1 day,  5:26,  1 user,  load average: 0.30, 0.48, 0.62
     Tasks:   8 total,   1 running,   7 sleeping,   0 stopped,   0 zombie
-    %Cpu(s):  6.3 us,  1.4 sy,  0.0 ni, 90.9 id,  1.4 wa,  0.0 hi,  0.0 si,  0.0 st
-    KiB Mem:  11661364 total, 10395640 used,  1265724 free,  1712168 buffers
-    KiB Swap: 19530748 total,     9460 used, 19521288 free.  3876920 cached Mem
+    %Cpu(s):  3.7 us,  1.6 sy,  0.0 ni, 94.0 id,  0.7 wa,  0.0 hi,  0.0 si,  0.0 st
+    KiB Mem:  11661364 total, 11039556 used,   621808 free,  1717756 buffers
+    KiB Swap: 19530748 total,    10940 used, 19519808 free.  4097780 cached Mem
 
       PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
-       12 root      20   0  489240  23088   4472 S   2.7  0.2   0:58.21 /usr/local/bin/python /usr/local/bin/jnt_nut -c /etc/janitoo/janitoo_nut.c+
-       11 root      39  19   23500   1492   1200 S   0.3  0.0   0:00.12 top -b
-        1 root      20   0   21740   1596   1328 S   0.0  0.0   0:00.03 /bin/bash /root/auto.sh
-       10 root      20   0   55508  10068   1336 S   0.0  0.1   0:00.06 /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
-       13 root      20   0   55176   3120   2444 S   0.0  0.0   0:00.01 /usr/sbin/sshd -D
-       24 root      20   0   82716   3936   3076 S   0.0  0.0   0:00.06 sshd: root@pts/0
-       29 root      20   0   20244   1904   1488 S   0.0  0.0   0:00.00 -bash
-       34 root      20   0   21940   1412   1048 R   0.0  0.0   0:00.12 top
+       59 root      20   0  479980  21756   4368 S   2.3  0.2   0:45.43 jnt_nut
+      105 root      20   0   21940   1416   1048 R   0.3  0.0   0:00.01 top
+        1 root      20   0   21740   1604   1328 S   0.0  0.0   0:00.04 auto.sh
+       10 root      20   0   55508  10180   1412 S   0.0  0.1   0:00.22 supervisord
+       11 root      39  19   23500   1496   1200 S   0.0  0.0   0:00.42 top
+       12 root      20   0   55176   3116   2444 S   0.0  0.0   0:00.02 sshd
+       30 root      20   0   82716   3928   3072 S   0.0  0.0   0:00.18 sshd
+       32 root      20   0   20244   2020   1528 S   0.0  0.0   0:00.02 bash
 
 Administer your containers
 ==========================
