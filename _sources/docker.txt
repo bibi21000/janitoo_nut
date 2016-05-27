@@ -2,9 +2,8 @@
 Using the docker appliance
 ==========================
 
-.. image:: https://imagelayers.io/badge/bibi21000/janitoo_nut:latest.svg
-    :target: https://imagelayers.io/?images=bibi21000/janitoo_nut:latest
-    :alt: Docker image layers
+.. jnt-badge::
+    :badges: docker
 
 
 Installing Docker
