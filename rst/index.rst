@@ -27,9 +27,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-Keywords
-========
-
-.. jnt-package::
-    :infos: keywords
