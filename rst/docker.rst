@@ -87,7 +87,7 @@ Update the nut configuration file :
 
 .. code:: bash
 
-    $ ssh root@$127.0.0.1 -p 8883
+    $ ssh root@127.0.0.1 -p 8883
 
 Default password is janitoo. You can change it but it will be restored on the next running container update. Prefer the key solutions.
 
@@ -152,21 +152,21 @@ The top result in the running appliance :
 
 .. code:: bash
 
-    top - 23:48:17 up 1 day,  5:26,  1 user,  load average: 0.30, 0.48, 0.62
+    top - 19:15:46 up 10 days, 53 min,  1 user,  load average: 1.19, 0.85, 0.68
     Tasks:   8 total,   1 running,   7 sleeping,   0 stopped,   0 zombie
-    %Cpu(s):  3.7 us,  1.6 sy,  0.0 ni, 94.0 id,  0.7 wa,  0.0 hi,  0.0 si,  0.0 st
-    KiB Mem:  11661364 total, 11039556 used,   621808 free,  1717756 buffers
-    KiB Swap: 19530748 total,    10940 used, 19519808 free.  4097780 cached Mem
+    %Cpu(s):  6.8 us,  1.5 sy,  0.1 ni, 91.4 id,  0.2 wa,  0.0 hi,  0.0 si,  0.0 st
+    KiB Mem:  11661364 total, 11337104 used,   324260 free,   587492 buffers
+    KiB Swap: 19530748 total,   301772 used, 19228976 free.  4396544 cached Mem
 
       PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
-       59 root      20   0  479980  21756   4368 S   2.3  0.2   0:45.43 jnt_nut
-      105 root      20   0   21940   1416   1048 R   0.3  0.0   0:00.01 top
-        1 root      20   0   21740   1604   1328 S   0.0  0.0   0:00.04 auto.sh
-       10 root      20   0   55508  10180   1412 S   0.0  0.1   0:00.22 supervisord
-       11 root      39  19   23500   1496   1200 S   0.0  0.0   0:00.42 top
-       12 root      20   0   55176   3116   2444 S   0.0  0.0   0:00.02 sshd
-       30 root      20   0   82716   3928   3072 S   0.0  0.0   0:00.18 sshd
-       32 root      20   0   20244   2020   1528 S   0.0  0.0   0:00.02 bash
+       13 root      20   0  480680  22516   4384 S   2.0  0.2   0:39.28 /usr/local/bin/python /usr/local/bin/jnt_nut -c /etc/janitoo/janitoo_nut.conf front
+        1 root      20   0   21740   1604   1328 S   0.0  0.0   0:00.03 /bin/bash /root/auto.sh
+       10 root      20   0   55508  10064   1336 S   0.0  0.1   0:00.05 /usr/bin/python /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+       11 root      39  19   23500   1492   1200 S   0.0  0.0   0:00.09 top -b
+       12 root      20   0   55176   3120   2444 S   0.0  0.0   0:00.02 /usr/sbin/sshd -D
+       44 root      20   0   82716   3932   3076 S   0.0  0.0   0:00.06 sshd: root@pts/0
+       46 root      20   0   20244   1904   1488 S   0.0  0.0   0:00.02 -bash
+       50 root      20   0   21940   1424   1048 R   0.0  0.0   0:00.04 top
 
 Administer your containers
 ==========================
