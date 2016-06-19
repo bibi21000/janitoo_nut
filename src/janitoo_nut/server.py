@@ -36,7 +36,7 @@ from janitoo.mqtt import MQTTClient
 from janitoo.server import JNTServer
 
 class NutServer(JNTServer):
-    """The Roomba Server
+    """The Nut Server
 
     """
     def _get_egg_path(self):
