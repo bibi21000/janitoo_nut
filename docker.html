@@ -136,16 +136,12 @@
 </div>
 <div class="section" id="initial-installation">
 <h2>Initial installation<a class="headerlink" href="#initial-installation" title="Permalink to this headline">¶</a></h2>
-<p>Pull the image :</p>
-<div class="code bash highlight-python"><div class="highlight"><pre>$ docker pull bibi21000/janitoo_nut
-</pre></div>
-</div>
 <p>Create a &#8216;store&#8217; container  :</p>
-<div class="code bash highlight-python"><div class="highlight"><pre>$ docker create -v /root/.ssh/ -v /opt/janitoo/etc/ --name nut_store bibi21000/janitoo_nut /bin/true
+<div class="code bash highlight-python"><div class="highlight"><pre>$ make docker-local-store
 </pre></div>
 </div>
 <p>Create a &#8216;running&#8217; container :</p>
-<div class="code bash highlight-python"><div class="highlight"><pre>$ docker create --volumes-from nut_store -p 8883:22 --name nut_running bibi21000/janitoo_nut
+<div class="code bash highlight-python"><div class="highlight"><pre>$ make docker-local-running
 </pre></div>
 </div>
 <p>Yous should now have 2 created containers :</p>
@@ -169,7 +165,7 @@
 </pre></div>
 </div>
 <div class="code bash highlight-python"><div class="highlight"><pre>CONTAINER ID        IMAGE                          COMMAND             CREATED              STATUS          PORTS                  NAMES
-cc1a58b59f7c        bibi21000/janitoo_nut   &quot;/root/auto.sh&quot;     About a minute ago   Up 8 seconds    0.0.0.0:8882-&gt;22/tcp   nut_running
+cc1a58b59f7c        bibi21000/janitoo_nut   &quot;/root/auto.sh&quot;     About a minute ago   Up 8 seconds    0.0.0.0:8883-&gt;22/tcp   nut_running
 </pre></div>
 </div>
 <p>And stop it :</p>

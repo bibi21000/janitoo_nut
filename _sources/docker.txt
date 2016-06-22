@@ -15,23 +15,17 @@ Install docker using the following documentation https://docs.docker.com/engine/
 Initial installation
 ====================
 
-Pull the image :
-
-.. code:: bash
-
-    $ docker pull bibi21000/janitoo_nut
-
 Create a 'store' container  :
 
 .. code:: bash
 
-    $ docker create -v /root/.ssh/ -v /opt/janitoo/etc/ --name nut_store bibi21000/janitoo_nut /bin/true
+    $ make docker-local-store
 
 Create a 'running' container :
 
 .. code:: bash
 
-    $ docker create --volumes-from nut_store -p 8883:22 --name nut_running bibi21000/janitoo_nut
+    $ make docker-local-running
 
 Yous should now have 2 created containers :
 
@@ -64,7 +58,7 @@ Check that is running :
 .. code:: bash
 
     CONTAINER ID        IMAGE                          COMMAND             CREATED              STATUS          PORTS                  NAMES
-    cc1a58b59f7c        bibi21000/janitoo_nut   "/root/auto.sh"     About a minute ago   Up 8 seconds    0.0.0.0:8882->22/tcp   nut_running
+    cc1a58b59f7c        bibi21000/janitoo_nut   "/root/auto.sh"     About a minute ago   Up 8 seconds    0.0.0.0:8883->22/tcp   nut_running
 
 And stop it :
 
