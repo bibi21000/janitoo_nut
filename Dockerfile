@@ -11,6 +11,7 @@ WORKDIR /opt/janitoo/src
 RUN ls -lisa
 
 RUN make clone module=janitoo_nut && \
+    make deps module=janitoo_nut && \
     make appliance-deps module=janitoo_nut && \
     apt-get clean && rm -Rf /tmp/*||true && \
     [ -d /root/.cache ] && rm -Rf /root/.cache/*
